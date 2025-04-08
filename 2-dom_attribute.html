@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+
+  <!-- 입력필드에 속성 추가 -->
+  <input type="text" id="text" value="ABC" data-role="name">
+  <br>
+  <!-- 버튼을 클릭했을 때 func()함수를 호출 -->
+  <button onclick="func(event)">저장</button>
+
+  <script>
+    // HTML 태그의 속성 조작하기
+
+    // 아이디로 입력필드 가져오기
+    const input = document.getElementById('text');
+    console.log(input);
+
+    // input이 가지고 있는 기본값 확인
+    // value : 입력필드에 입력되어 있는 값
+    // 사용자가 입력한 값을 꺼낼때 사용
+    console.log(input.value);
+
+    // value라는 속성 꺼내기 (위와 같은)
+    // getAttribute : 태그가 가지고 있는 특정 속성을 꺼내는 함수
+    const value = input.getAttribute('value')
+    console.log(value);
+
+    const type = input.getAttribute('type')
+    console.log(type);
+    
+    // hasAttribute : 특정 속성이 있는지 확인하는 함수
+    // 결과는 boolean으로 반환
+    const result = input.getAttribute('value')
+    console.log(result);
+
+    // 특정 속성을 삭제
+    input.removeAttribute('data-role');
+
+    // 버튼 이벤트를 사용해서 속성 변경하기
+    // 매개변수
+    // event.taget : 이벤트가 발생된 요소
+    function func(event) {
+      // 버튼
+      const button = event.target;
+
+      // 사용자가 중복해서 버튼을 누를 수 없도록 2초간 비활성화
+      // setAttribute : 태그에 속성을 추가하는 함수
+      button.setAttribute('disabled', 'true');
+
+      // 2초가 지난 후에 다시 버튼을 활성화
+      setTimeout(()=>{
+        // disabled 속성을 삭제
+        button.removeAttribute('disabled');
+      }, 2000);
+    }
+
+
+  </script>
+
+</body>
+</html>

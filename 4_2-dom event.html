@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+
+  <!-- 키를 눌렀을때 이벤트 처리 -->
+  <input type="text" id="text" onkeydown="func()">
+
+
+  <script>
+
+    function func() {
+      // 사용자가 입력한 값을 확인
+      const input = document.getElementById('text');
+      console.log(input.value)
+      console.log(window.event.key, window.event.keyCode)
+    }
+
+
+  </script>
+
+  
+</body>
+</html>

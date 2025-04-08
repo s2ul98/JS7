@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+</head>
+<body>
+  
+  <h1 id="title"></h1>
+  <select id="sel"> </select>
+
+  <!-- beforebegin : 해당 엘리먼트 앞 -->
+  <ul id="myul">
+    <!-- afterbegin : 해당 엘리먼트 안에 첫번째 자식으로 추가 -->
+      <li>항목1</li>  
+      <li>항목2</li>
+      <li>항목3</li>
+      <li>항목4</li>
+      <!-- beforeend:  마지막 자식 -->
+  </ul>
+
+
+  <button onclick="func()">새로운 항목 추가</button>
+
+  <p id="demo">p태그 입니다</p>
+  <button onclick="remove()">p태그 삭제</button>
+
+  
+
+  <script>
+    // HTML 태그에 컨텐츠 추가하기
+    const h = document.getElementById('title');
+    console.log(h);
+
+    // 제목 쓰기
+    // html 문서가 만들어지고 난 후에 태그를 수정
+    // innerText : 태그에 텍스트를 추가
+    h.innerText = '제목입니다';
+
+    const select = document.getElementById('sel');
+    select.innerHTML = '<option value="">선택하세요</option>';
+
+    // 목록에 새로운 항목을 추가하는 함수
+    function func() {
+      const ul = document.getElementById('myul');
+      // 새로운 항목을 특정한 위치에 추가
+      // 인자 : 위치, 새로운 태그
+      ul.insertAdjacentHTML('afterbegin', '<li>새로운 항목</li>');
+    }
+    
+    // p태그 삭제하기
+    function remove() {
+
+      const p = document.getElementById('demo');
+      console.log(p);
+      p.remove();
+    }
+    
+
+
+
+
+  </script>
+</body>
+</html>

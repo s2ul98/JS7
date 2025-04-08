@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>
+    .menu {
+      display: flex;
+      list-style: none;
+      height: 50px;
+      padding: 0;
+      margin: 0;
+      background-color: white;
+      border-bottom: 2px solid black;
+    }
+
+    /* 대메뉴아이템 */
+    .menu {
+      width: 150px;
+      text-align: center;
+      background-color: #eee;
+      padding: 10px 0;
+      font-weight: bold;
+
+      /* 대메뉴 아래 각 서브 메뉴의 위치를 설정하기 위한 기준을 설정 */
+      position: relative;
+    }
+    .menu-item:hover {
+      background-color: #ddd;
+    }
+    /* 서브메뉴스타일 */
+    .submenu {
+      /* 서브메뉴는 메뉴 바로 아래 붙이기 */
+      position: absolute;
+      top: 50px;
+
+      list-style: none;
+      padding: 0;
+      width: 150px;
+      margin: 0;
+      background-color: 1px solid #eee;
+    }
+    /* 서부메뉴 아이템 */
+    .submenu li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li class = "menu-item">대메뉴1
+      <ul class="submenu">
+        <li>서브메뉴 1-1</li>
+        <li>서브메뉴 1-2</li>
+      </ul>
+    </li>
+    <li class="menu-item">대메뉴2
+      <ul class="submenu">
+        <li>서브메뉴 1-1</li>
+        <li>서브메뉴 1-2</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
