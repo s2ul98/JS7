@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>
+    /* 스타일을 미리 작성 */
+    .heightlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <!-- dom 객체를 사용해서 html 요소 생성하기 -->
+  <p id="text">p태그</p>
+  <!-- 토글 버튼을 클릭하면 배경색이 계속 변경 됨 -->
+  
+  <!-- 버튼에 이벤트를 추가하는 두가지 방법 
+        1. 버튼을 만들때 
+        
+        -->
+  <button id="btn1">Toggle Highlight</button>
+  <button id="btn2" onclick="doRemove()">Remove Text</button>
+
+  <script>
+    // 새로운 span 태그 생성
+    // createElement() : 엘리먼트를 생성하는 함수 (dlswk:태그명)
+    const newSpan = document.createElement('span');
+    
+    // 내용 작성
+    newSpan.textContent = '새로운 span 태그';
+
+    // 새로 만든 span 태그를 특정 위치에 추가
+    // span 태그를 p태그의 자식으로 추가
+    const p = document.getElementById('text');
+    p.appendChild(newSpan);
+
+    // span의 배경색을 변경
+    // span에 'heightlight' class추가
+    newSpan.classList.add('heightlight');
+
+    // // 버튼을 클릭했을 때 위에 있는 p태그에 heightlight가 있으면 제거
+    // function onClick() {
+    //   newSpan.classList.toggle('heightlight');
+    // }
+
+    // 2. html 문서가 만들어진 후에, 이벤트 리스너를 사용해서 등록
+    const btn = document.getElementById('btn1');
+    // 이벤트 등록
+    // 이벤트 종류, 실행할 함수
+    btn.addEventListener('click', () => {
+      newSpan.classList.toggle('heightlight');
+
+      if(newSpan.classList.contains('heightlight')) {
+        console.log('텍스트가 강조되었습니다')
+      } else {
+        console.log('텍스트가 강조되지않았습니다')
+      }
+
+    });
+
+    // // span태그에 'heightlight'클래스가 있는지 확인
+    // const result = newSpan.classList.contains('heightlight');
+    // console.log(result);
+
+    // 삭제를 누르면 spsn 태그를 삭제
+    function doRemove() {
+      newSpan.remove();
+    }
+
+    
+  </script>
+</body>
+</html>

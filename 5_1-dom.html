@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>
+    /* border-green라는 클래스를 가진 태그에 테두리 추가 */
+    /* 우리가 원하는 스타일을 미리 작성 */
+    .border-green {
+      border: 2px solid green;
+    }
+    .border-red {
+      border: 2px solid red;
+    }
+    .background-yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- dom 객체를 사용해서 html 요소의 스타일 바꾸기 -->
+
+  Text:
+  <br>
+  <input type="text" id="text1" class="background-yellow">
+  <br>
+
+  Radio (이메일 수신)
+  <br>
+  <!-- 라디오 버튼 그룹으로 묶기 -->
+  <label for="email_y">동의</label>
+  <input type="radio" id="email_y" name="email" value="y" onclick="showEmail()">
+
+  <label for="email_n">거부</label>
+  <!-- checked : 화면이 나타날때 거부에 기본값으로 체크가 됨 -->
+  <input type="radio" id="email_n" name="email" value="n" checked onclick="hideEmail()">
+
+  <!-- 이메일 입력필드 -->
+  <div id = "div-mail" style="display: none;">
+    이메일 : <input type="text"  id="input-mail">
+  </div>
+  <br>
+
+  <!-- 이벤트 함수 인자 : event 또는 this -->
+  <select id="sel" onchange="onChange(this)">
+    <option value=""></option>
+    <option value="KO">Korea</option>
+    <option value="CN">China</option>
+    <option value="JP">Japan</option>
+  </select>
+
+  <!-- 첫번째 셀렉트 박스에서 한국을 선택하기 전까지는 숨김 처리 -->
+  <select id="sel2" style="display: none;">
+    <option value="서울">서울</option>
+    <option value="부산">부산</option>
+    <option value="대전">대전</option>
+    <option value="제주">제주</option>
+  </select>
+  <br>
+
+  <button onclick="onSave()">저장</button>
+
+  <script>
+    // 이벤트 함수 정의
+    function changeBorder() {
+      // 입력 필드에 값이 입력되면 테두리색 변경
+      const input = document.getElementById('text1');
+      
+      // 스타일 미리 작성 후 이벤트가 발생했을 때 클래스 이름 추가
+      input.className = 'border-green';
+    }
+
+      // 동의 버튼을 클릭하면 이메일 입력힐드를 화면에 보여주기
+      function showEmail() {
+        const div = document.getElementById('div-mail');
+        div.style.display = '';
+      }
+
+      // 거부 버튼을 클릭하면 이메일 입력필드를 숨기기
+      function hideEmail() {
+        const div = document.getElementById('div-mail');
+        div.style.display = 'none'; // 숨기기
+      }
+
+      // select 박스에서 옵션을 변경했들 때 이벤트 처리
+      // 목록 중에서 한국을 선택했으면 지역 필드 보여주기
+      function onChange(obj) {
+        // 현재 선택된 옵션 확인
+        const option = obj.value;
+        // 지역 필드 가져오기
+        const select2 = document.getElementById('sel2');
+
+        if(option == 'KO') {
+          select2.style.display = ''; // 보여주기
+        } else {
+          select2.style.display = 'none'; // 숨기기
+        }
+        // 왜 this를 받아 오는지? -> 이벤트가 발생된 요소에서 필요한 값을 바로 꺼내기 위해서
+        // 첫번째 select box를 가져오는 방법
+        // 1. dom 객체의 함수 사용하기 const div = document.getElementById('sel');
+        // 2. this 키워드 사용하기
+      }
+
+      // 저장버튼을 클릭했을 때 입력필드를 검사
+      // 사용자가 입력한 값이 있으면 테두리를 원래색으로 변경
+      // 그렇지 않으면 red로 변경
+      function onSave() {
+        // 입력필드 가져오기
+        const input = document.getElementById('text1');
+        // 입력필드에 입력된 값 가져오기
+        const text = input.value;
+
+        // if(text == '') {
+        //   // 필드에 클래스 추가하는 방법
+        //   // 1. className 속성 대입 
+        //   input.classList.add('border-red');
+        //   input.classList.add('background-yellow');
+        // } else {
+        //   // 입력필드의 클래스 목록에 'border-red'가 있으면 삭제
+        //   // 2. ClassList의 add함수 사용
+        //   input.classList.remove('border-red');
+        // }
+
+        if(text == '') {
+          // className 속성을 사용하면 기존 값이 제거됨
+          input.classList.add('border-red');
+        } else {
+          input.classList.remove('border-red');
+        }
+
+        // 입력필드의 클래그 목록 확인
+        console.log(input.classList);
+
+      }
+    
+  </script>
+
+</body>
+</html>

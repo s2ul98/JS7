@@ -1,0 +1,31 @@
+<!-- html > css > js -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- 외부에 있는 css 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 외부에 있는 js 파일 연결 -->
+  <script src="script.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h2>T.D List</h2>
+    <div id="todo-div">
+      <input type="text" id="todo-input">
+      <button id="add-btn" onclick="addTodo()">+</button>
+    </div>
+
+  <ul id="todo-list">
+    <!-- X -->
+  </ul>
+
+  <div id="todo-count">
+    총 <span id="total-count">0</span> 개
+    완료 <span id="complete-count">0</span> 개
+  </div>
+
+  <button id="detlete-all-btn" onclick="deleteAll()">전체 삭제</button>
+
+  </div>
+</body>
+</html>
