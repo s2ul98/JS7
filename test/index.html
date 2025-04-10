@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script src="./script.js" defer></script>
+  <!-- 해결방법 2. script태그에 defer 속성 추가 -->
+  <!-- defer : hrml 문서가 완전히 만들어진 후에 스크립트를 실행하는 기능.
+  dom요소가 모두 생성된 후에 스크립트를 실행하므로 dim요소에 접근 할 수 있음
+    -->
+</head>
+<body>
+  
+  <div id="box">BOX</div>
+  <button onclick="onClick()">클릭</button>
+
+</body>
+<!-- 해결방법 1. script을 body뒤에 쓰기 -->
+<script>
+  const box = document.querySelector('box');
+  box.style.background = 'yellow';
+</script>
+</html>
